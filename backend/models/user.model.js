@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// TODO: Have to add timestamp to this model
 const userSchema = new mongoose.Schema({
     username: {
         type: String,

@@ -1,11 +1,12 @@
 import express from 'express';
+import CookieParser from 'cookie-parser';
 
 import authRouter from '../routes/auth.routes.js';
 
 const app = express();
 
 app.use(express.json());
-
+app.use(CookieParser())
 /** 
  * Using all the required routers here
 */
