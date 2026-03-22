@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import userModel from "../models/user.model.js";
+import blacklistTokenModel from "../models/blacklist.model.js";
 
 
 /**
@@ -81,9 +82,30 @@ const loginUserController = async (req, res) => {
     res.status(200).json({ message: "User logged in successfully!", user: { id: user._id, username: user.username, email: user.email } })
 }
 
+/**
+ * @name logoutUserController
+ * @description Controller to handle user logout by clearing the token cookie and blacklisting the token
+ * @route GET /api/auth/logout
+ * @access Public
+ */
+const logoutUserController = async (req, res) => {
+
+    const token = req.cookies.token
+
+    if (token) {
+        // Blacklist the token
+        await blacklistTokenModel.create({ token })
+    }
+
+    res.clearCookie("token")
+
+    res.status(200).json({ message: "User logged out successfully!"})
+}
+
 const authControllers ={
     registerUserController,
-    loginUserController
+    loginUserController,
+    logoutUserController
 }
 
 export default authControllers;
