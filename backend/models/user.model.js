@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// TODO: Have to add timestamp to this model
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -17,6 +16,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
     }
+}, {
+    timestamps: true
 })
 
 const userModel = mongoose.model("users", userSchema);
