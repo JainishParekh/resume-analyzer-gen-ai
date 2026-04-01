@@ -99,13 +99,40 @@ const logoutUserController = async (req, res) => {
 
     res.clearCookie("token")
 
-    res.status(200).json({ message: "User logged out successfully!"})
+    res.status(200).json({ message: "User logged out successfully!" })
 }
 
-const authControllers ={
+/**
+ * @name getUserProfileController
+ * @description Controller to get the authenticated user's profile information
+ * @route GET /api/auth/profile
+ * @access Private (requires authentication)
+ */
+
+const getUserProfileController = async (req, res) => {
+
+    console.log("Authenticated user:", req.user);
+
+    const userId = req.user.userId;
+
+    const user = await userModel.findById(userId)
+
+    if (!user) {
+        return res.status(401).json({ message: "Unauthorized. Please log in to access your profile." });
+    }
+
+    res.status(200).json({
+        message: "User profile fetched successfully!",
+        user: { id: user._id, username: user.username, email: user.email }
+    });
+}
+
+
+const authControllers = {
     registerUserController,
     loginUserController,
-    logoutUserController
+    logoutUserController,
+    getUserProfileController
 }
 
 export default authControllers;
