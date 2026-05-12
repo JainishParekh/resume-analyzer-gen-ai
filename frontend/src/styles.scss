@@ -1,18 +1,5 @@
 @use "sass:map";
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body, #root {
-    width: 100%;
-    background-color: #141414;
-    color: #F1F1F1;
-    font-family: "Manrope", sans-serif;
-}
-
 // ScSS variables 
 
 // COLORS
@@ -36,16 +23,13 @@ $theme-colors: (
     "outline": #8b919b,
     "outline-variant": #414750,
     "surface-tint": #9ccaff,
-    "primary:" #9ccaff,
     "on-primary": #003257,
     "primary-container": #205b8e,
     "on-primary-container": #acd2ff,
     "inverse-primary": #296195,
-    "secondary": #6fd7d6,
     "on-secondary": #003737,
     "secondary-container": #2fa09f,
     "on-secondary-container": #002f2f,
-    "tertiary": #ffb781,
     "on-tertiary": #4e2500,
     "tertiary-container": #894600,
     "on-tertiary-container": #ffc295,
@@ -72,7 +56,7 @@ $theme-colors: (
 
 // FUNCTIONS
 @function set($color) {
-    @return map.get($theme-color, $color);
+    @return map.get($theme-colors, $color);
 }
 
 @function rounded($size) {
@@ -125,4 +109,15 @@ $theme-colors: (
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.05em
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    background-color: set("background");
+    color: set("on-background");;
 }
