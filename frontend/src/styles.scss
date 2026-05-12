@@ -1,0 +1,128 @@
+@use "sass:map";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    width: 100%;
+    background-color: #141414;
+    color: #F1F1F1;
+    font-family: "Manrope", sans-serif;
+}
+
+// ScSS variables 
+
+// COLORS
+$theme-colors: (
+    "primary": #004A7C,
+    "secondary": #008B8B,
+    "tertiary": #894600,
+    "neutral": #75777c,
+    "surface": #111417,
+    "surface-dim": #111417,
+    "surface-bright": #37393e,
+    "surface-container-lowest": #0b0e12,
+    "surface-container-low": #191c20,
+    "surface-container": #1d2024,
+    "surface-container-high": #272a2e,
+    "surface-container-highest": #323539,
+    "on-surface": #e1e2e8,
+    "on-surface-variant": #c1c7d1,
+    "inverse-surface": #e1e2e8,
+    "inverse-on-surface": #2e3135,
+    "outline": #8b919b,
+    "outline-variant": #414750,
+    "surface-tint": #9ccaff,
+    "primary:" #9ccaff,
+    "on-primary": #003257,
+    "primary-container": #205b8e,
+    "on-primary-container": #acd2ff,
+    "inverse-primary": #296195,
+    "secondary": #6fd7d6,
+    "on-secondary": #003737,
+    "secondary-container": #2fa09f,
+    "on-secondary-container": #002f2f,
+    "tertiary": #ffb781,
+    "on-tertiary": #4e2500,
+    "tertiary-container": #894600,
+    "on-tertiary-container": #ffc295,
+    "error": #ffb4ab,
+    "on-error": #690005,
+    "error-container": #93000a,
+    "on-error-container": #ffdad6,
+    "primary-fixed": #d0e4ff,
+    "primary-fixed-dim": #9ccaff,
+    "on-primary-fixed": #001d35,
+    "on-primary-fixed-variant": #00497b,
+    "secondary-fixed": #8cf3f3,
+    "secondary-fixed-dim": #6fd7d6,
+    "on-secondary-fixed": #002020,
+    "on-secondary-fixed-variant": #004f4f,
+    "tertiary-fixed": #ffdcc4,
+    "tertiary-fixed-dim": #ffb781,
+    "on-tertiary-fixed": #2f1400,
+    "on-tertiary-fixed-variant": #703800,
+    "background": #111417,
+    "on-background": #e1e2e8,
+    "surface-variant": #323539
+);
+
+// FUNCTIONS
+@function set($color) {
+    @return map.get($theme-color, $color);
+}
+
+@function rounded($size) {
+
+    @if $size == "sm" {
+        @return 0.25rem;
+    }
+    @else if $size == "md" {
+        @return 0.75rem;
+    }
+    @else if $size == "lg" {
+        @return 1rem;
+    }
+    @else if $size == "xl" {
+        @return 1.5rem;
+    }
+    @else if $size == "full" {
+        @return 9999px;
+    }
+    @else {
+        @return 0.5rem;
+    }
+}
+
+// TYPOGRAPHY
+.display-lg {
+    font-family: Manrope;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2
+}
+
+.headline-sm {
+    font-family: Manrope;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.body-md {
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.label-md {
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.05em
+}
