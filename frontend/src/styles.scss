@@ -1,4 +1,6 @@
 @use "sass:map";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
 
 // ScSS variables 
 
@@ -53,6 +55,11 @@ $theme-colors: (
     "on-background": #e1e2e8,
     "surface-variant": #323539
 );
+
+$auth-decorative-gradient: linear-gradient(125deg,
+            #9ccaff 0%,
+            #9ccaff 50%,
+            #6fd7d6 100%);
 
 // FUNCTIONS
 @function set($color) {
@@ -115,6 +122,7 @@ $theme-colors: (
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Manrope;
 }
 
 html, body, #root {

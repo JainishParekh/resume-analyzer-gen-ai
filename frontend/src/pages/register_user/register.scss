@@ -1,0 +1,119 @@
+@use "../../styles.scss" as *;
+
+.register_page_wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.register_page_decoration {
+  height: 100%;
+  width: 100%;
+  background-image: $auth-decorative-gradient;
+
+  .decorative_text_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    max-width: 30rem;
+    row-gap: 1.5rem;
+  }
+
+  .decorative_text_main {
+    font-size: 3rem;
+    line-height: 3.75rem;
+    font-weight: 900;
+    color: set("on-primary")
+  }
+
+  .decorative_sub_text {
+    font-family: Inter;
+    font-size: 1rem;
+    line-height: 1.875rem;
+    color: set("on-primary-fixed")
+  }
+}
+
+.register_page_form {
+  background-image: set("surface-container-low");
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register_form_wrapper {
+  width: 100%;
+  max-width: 28rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+}
+
+.register_form_heading_wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  color: set("on-surface-variant");
+}
+
+.register_form_main_heading {
+  text-transform: capitalize;
+}
+
+.register_page_sub_heading {
+  display: flex;
+  column-gap: 0.375rem;
+  align-items: center;
+
+  .decorative {
+    width: 2rem;
+    height: 0.25rem;
+    background: set("surface-tint");
+  }
+
+  .sub_heading {
+    text-transform: uppercase;
+  }
+}
+
+.register_form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+} 
+
+.register_page_to_login_page {
+    color: set("on-surface-variant");
+    font-family: Inter;
+    line-height: 1rem;
+    font-size: 0.875rem;
+    width: fit-content;
+    margin-inline: auto;
+
+    .redirection_link {
+        color: set("secondary-fixed-dim");
+        margin-left: 0.25rem;
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+.app_logo_wrapper {
+    display: flex;
+    column-gap: 0.25rem;
+    align-items: center;
+}
+
+.app_name {
+    color: set("on-primary");
+}

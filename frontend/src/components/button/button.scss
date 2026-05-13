@@ -1,0 +1,49 @@
+@use "../../styles.scss" as *;
+
+.btn_container {
+  .btn_primary {
+    background-image: linear-gradient(
+      90deg,
+      #9ccaff 0%,
+      #2a5f8ddb 50%,
+      #045796 100%
+    );
+    padding-block: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.25rem;
+    width: 100%;
+    border: none;
+    border-radius: rounded("md");
+    color: set("on-primary");
+  }
+
+  button {
+    transition: all 0.2s ease-in-out;
+
+    .btn_text {
+      font-family: Manrope;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      text-transform: capitalize;
+    }
+
+    .btn_decor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    &:active {
+      cursor: pointer;
+      transform: scale(0.98);
+    }
+  }
+}
