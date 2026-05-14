@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+    position: relative;
 
     label {
         color: set("on-surface-variant");
@@ -42,5 +43,16 @@
                 letter-spacing: 0.05em;
             }
         }
+    }
+
+    .input_error {
+        font-family: Inter;
+        font-size: 0.75rem;
+        color: set("on-error");
+        position: absolute;
+        top: 100%;
+        background-color: set("error");
+        border-radius: rounded("sm");
+        padding: 0.125rem;
     }
 }

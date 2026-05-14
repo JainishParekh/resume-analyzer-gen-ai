@@ -1,10 +1,47 @@
 import React from 'react'
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+
 import "./login.scss"
 import { Button, Input } from '../../components'
 import { AppLogo, Password, User } from "../../assets"
+import { useAuth } from "../../hooks"
+import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../../constants/formValidation'
 
 const Login = () => {
+
+  const SCHEMA = yup.object({
+    email: EMAIL_VALIDATION,
+    password: PASSWORD_VALIDATION
+  })
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: ""
+    },
+    resolver: yupResolver(SCHEMA)
+  })
+
+  const {
+    loading,
+    handleLoginApi
+  } = useAuth()
+
+  const navigation = useNavigate()
+
+  const onSubmit = async (data) => {
+    await handleLoginApi({ ...data })
+    navigation("/", { viewTransition: true })
+  }
+
   return (
     <div className='login_page_container'>
       <div className='login_page_wrapper'>
@@ -40,14 +77,14 @@ const Login = () => {
                 </h2>
               </div>
             </div>
-            <form className='login_form'>
-              <Input label={"Email"} preDecorator={<User />} placeholder='Enter email' />
-              <Input label={"Password"} type={"password"} preDecorator={<Password />} placeholder='Enter password' />
-              <Button text={"Login"} type={'submit'} />
+            <form className='login_form' onSubmit={handleSubmit(onSubmit)}>
+              <Input label={"email"} errors={errors} register={register} rules={{ required: true }} preDecorator={<User />} placeholder='Enter email' />
+              <Input label={"password"} errors={errors} register={register} rules={{ required: true }} type={"password"} preDecorator={<Password />} placeholder='Enter password' />
+              <Button disabled={!isValid | loading} text={"Login"} type={'submit'} isLoading={loading} />
             </form>
             <div className='login_page_to_register_page'>
               <span>New to the lens?</span>
-              <Link to={"../register"} viewTransition>
+              <Link aria-disabled={loading} to={"../register"} viewTransition>
                 <span className='redirection_link'>Create a Premium Account</span>
               </Link>
             </div>
